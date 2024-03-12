@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{name}}&hearts;</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f8fa;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+
+  .profile-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .profile-header img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+
+  .profile-header h1 {
+    margin: 0;
+    font-size: 24px;
+    text-transform: capitalize;
+  }
+
+  .profile-header p {
+    margin: 5px 0 0;
+    color: #586069;
+  }
+
+  .profile-bio {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #586069;
+  }
+
+  .profile-bio input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .profile-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .profile-stats .stat {
+    text-align: center;
+  }
+
+  .profile-stats .stat span {
+    font-weight: bold;
+    display: block;
+    font-size: 18px;
+  }
+
+  .profile-repos {
+    margin-top: 20px;
+  }
+
+  .repo {
+    border-bottom: 1px solid #e1e4e8;
+    padding: 10px 0;
+  }
+
+  .repo:last-child {
+    border-bottom: none;
+  }
+
+  .repo a {
+    color: #0366d6;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .repo a:hover {
+    text-decoration: underline;
+  }
+
+  .image-change-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 24px;
+  }
+  #chart-container {
+    width: 400px;
+    height: 400px;
+    position: relative;
+  }
+</style>
+</head>
+<body>
+  
+  {% load static%}
+<div class="container">
+  <div class="profile-header">
+    <img id="profileImage" src="https://avatars.githubusercontent.com/u/583231?v=4" alt="Profile Image">
+    <button class="image-change-button" onclick="changeProfileImage()">📷</button>
+    <div>
+      <h1>{{name}}</h1>
+      <p>{{email}}</p>
+      <p>{{bio}}</p>
+    </div>
+  </div>
+
+  <p class="profile-bio">
+  <form action="" method="post"></form>
+    <input type="text" name="bio" placeholder="Enter your Bio">
+    <button>save</button>
+  </p>
+
+  <div class="profile-stats">
+    <div class="stat">
+      <span>{{language_number}} students</span>
+      {{language}}
+    </div>
+    <div class="stat">
+      <span>32</span>
+      {{course}}
+    </div>
+    <div class="stat">
+      <span>{{total_students}}</span>
+      Total students Enrolled
+    </div>
+  </div>
+
+  <div class="profile-repos">
+    <div class="repo">
+      <a href="#">octocat/Hello-World</a>
+    </div>
+    <div class="repo">
+      <a href="#">octocat/Spoon-Knife</a>
+    </div>
+    <div class="repo">
+      <a href="#">octocat/octocat.github.io</a>
+    </div>
+  </div>
+</div>
+<div id="chart-container">
+  <canvas id="pie-chart"></canvas>
+</div>
+
+
+<script srrc="{% static 'js\account.js'%}"></script>
+
+</body>
+</html>
